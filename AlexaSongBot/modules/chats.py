@@ -21,7 +21,7 @@ async def broadcast(client, message):
             remove_chat_from_db(str(chat))
             pass
     await message.reply(
-        f"Message sent to {success} chat(s). {failed} chat(s) failed recieve message"
+        f"Mesaj {success} sohbete gönderildi. {failed} sohbette mesaj alınamadı"
     )
 
 
@@ -32,17 +32,17 @@ async def chatlist(client, message):
     for i in all_chats:
         if str(i).startswith("-"):
             chats.append(i)
-    chatfile = "List of chats.\n0. Chat ID | Members count | Invite Link\n"
+    chatfile = "Sohbet listesi.\n0. Sohbet Kimliği | Üye sayısı | Davet Bağlantısı\n"
     P = 1
     for chat in chats:
         try:
             link = await app.export_chat_invite_link(int(chat))
         except:
-            link = "Null"
+            link = "Yok"
         try:
             members = await app.get_chat_members_count(int(chat))
         except:
-            members = "Null"
+            members = "Yok"
         try:
             chatfile += "{}. {} | {} | {}\n".format(P, chat, members, link)
             P = P + 1
