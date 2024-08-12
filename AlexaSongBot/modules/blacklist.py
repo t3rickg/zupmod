@@ -15,7 +15,7 @@ async def blacklist(client, message):
         arg = get_arg(message)
         if len(arg) != 1:
             await message.reply(
-                "pass a user id or user name or reply to a user message"
+                "bir kullanıcı kimliğini veya kullanıcı adını iletin veya bir kullanıcı mesajını yanıtlayın"
             )
             return ""
         if arg.startswith("@"):
