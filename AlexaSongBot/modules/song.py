@@ -28,12 +28,12 @@ async def song(client, message):
     add_chat_to_db(str(chat_id))
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("Enter a song name. Check /help")
+        await message.reply("Bir şarkı adı girin. Kontrol et /help")
         return ""
-    status = await message.reply("🔎Searching song from YouTube 📺.. Please wait some time ⏳️ © @Mr_Dark_Prince ")
+    status = await message.reply("🔎YouTube'dan şarkı aranıyor 📺.. Lütfen biraz bekleyin ⏳️ © @negan3m ")
     video_link = yt_search(args)
     if not video_link:
-        await status.edit("😔Song not found.")
+        await status.edit("😔 İstediğin şarkıyı bulamadım")
         return ""
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
